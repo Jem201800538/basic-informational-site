@@ -1,12 +1,8 @@
 {
   "name": "p1",
   "version": "1.0.0",
-  "description": "The Odin Project - Basic Infomational Site",
-  "main": "app.js",
+  "description": "The Odin Project - Basic Informational Site",
   "type": "module",
-  "scripts": {
-    "start": "nodemon app.js"
-  },
   "author": "Jemuel Repoylo",
   "license": "ISC",
   "devDependencies": {

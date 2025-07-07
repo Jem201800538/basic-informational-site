@@ -1,6 +1,3 @@
-import {
-    createServer
-} from "node:http";
 import fs from "fs/promises";
 import url from "url";
 import path from "path";
@@ -9,7 +6,7 @@ import path from "path";
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const server = createServer(async (req, res) => {
+export default async function handler(req, res) {
     try {
         if (req.method === "GET") {
             let filepath;
@@ -29,7 +26,10 @@ const server = createServer(async (req, res) => {
             });
             res.end(data);
         } else {
-            throw new Error("Method not allowed!")
+            res.writeHead(405, {
+                'Content-Type': 'text/plain'
+            });
+            res.end("Method not allowed!");
         }
 
     } catch (error) {
@@ -38,8 +38,4 @@ const server = createServer(async (req, res) => {
         });
         res.end('Server Error');
     }
-});
-
-server.listen(8080, () => {
-    console.log('Server running at http://localhost:8080/')
-});
+}
